@@ -49,7 +49,7 @@ def generate_report(report_id):
     report = []
 
     # Iterate over each store
-    count = 0  #Hard dode just for showing demo
+    # count = 0  #Hard dode just for showing demo because app will take long time for read all database and create output
     for store_id in store_ids:
         # Fetch menu hours for the store
         with engine.connect() as con:
@@ -89,9 +89,9 @@ def generate_report(report_id):
 
         # Append the report data to the report DataFrame
         report.append([store_id, uptime_last_hour, uptime_last_day, uptime_last_week, downtime_last_hour, downtime_last_day, downtime_last_week])
-        count += 1
-        if count > 5:
-            break
+        # count += 1
+        # if count > 5:
+        #     break
 
     # Generate the report CSV file
     report_df = pd.DataFrame(report, columns=['store_id', 'uptime_last_hour', 'uptime_last_day', 'uptime_last_week',
